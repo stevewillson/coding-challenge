@@ -1,0 +1,70 @@
+{
+  "name": "spore-coding-challenge-frontend",
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "dist": "./bin/dist.sh",
+    "start": "./bin/start.sh",
+    "dev": "./bin/dev.sh"
+  },
+  "browserslist": [
+    "> 3% in US",
+    "last 2 firefox versions"
+  ],
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/eslint-parser": "^7.12.1",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@swc/cli": "^0.1.27",
+    "@swc/core": "^1.2.40",
+    "@swc/register": "^0.1.7",
+    "esbuild-register": "^1.1.1",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "assert-none-missing": "github:claydotio/assert-none-missing#es",
+    "autoprefixer": "^9.7.6",
+    "bluebird": "^3.7.2",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "cookie-parser": "^1.4.5",
+    "copy-webpack-plugin": "^8.1.1",
+    "cors": "^2.8.5",
+    "css-loader": "^1.0.1",
+    "esbuild-loader": "^2.7.0",
+    "esm": "https://github.com/jsg2021/esm/releases/download/v3.x.x-pr883/esm-3.x.x-pr883.tgz",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "http-hash": "^2.0.1",
+    "json-stable-stringify": "^1.0.1",
+    "location-router": "github:claydotio/location-router#es",
+    "lodash": "^4.17.20",
+    "mini-css-extract-plugin": "^1.6.0",
+    "module-alias": "^2.2.2",
+    "normalize-styl": "^8.0.1",
+    "postcss-loader": "^3.0.0",
+    "qs-lite": "0.0.2",
+    "react-metatags-hook": "^1.3.1",
+    "replace-hash-in-file-webpack-plugin": "^1.0.8",
+    "rxjs": "^7.0.0-beta.9",
+    "socket.io-client": "^2.0.4",
+    "style-loader": "^0.23.1",
+    "stylus": "^0.54.7",
+    "stylus-loader": "^3.0.2",
+    "webpack": "^4.43.0",
+    "webpack-bundle-analyzer": "^3.7.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "3.7.1",
+    "webpack-handle-css-loader": "^3.0.1",
+    "webpack-s3-plugin": "^1.0.3",
+    "webpack-stats-plugin": "^0.3.2",
+    "webpack-stream": "^5.2.1",
+    "xhr-request": "^1.1.0",
+    "zorium": "github:austinhallock/zorium#preact"
+  },
+  "_moduleAliases": {
+    "react": "node_modules/preact/compat/dist/compat.js",
+    "react-dom": "node_modules/preact/compat/dist/compat.js"
+  },
+  "author": "",
+  "version": "0.0.1"
+}

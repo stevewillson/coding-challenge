@@ -1,0 +1,20 @@
+type Note {
+  id: ID
+  slug: String
+  title: String
+  body: String
+}
+
+type NoteConnection {
+  nodes: [Note!]
+  totalCount: Int
+}
+
+extend type Query {
+  notes(titleQueryStr: String): NoteConnection
+  note(id: ID, slug: String): Note
+}
+
+extend type Mutation {
+  noteUpsert(id: ID, title: String, body: String): Note
+}

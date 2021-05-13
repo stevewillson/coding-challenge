@@ -1,0 +1,22 @@
+{
+  "name": "coding-challenge",
+  "version": "1.0.0",
+  "description": "We're a small team and each engineer will have a ton of autonomy over the part of the product they focus on. So the goal here is to see if you can adapt and learn quickly and independently :)",
+  "main": ".eslintrc.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/eslint-parser": "^7.12.1",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "eslint": "^7.26.0",
+    "eslint-config-standard": "^16.0.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.3.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

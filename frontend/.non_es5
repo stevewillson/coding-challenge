@@ -1,0 +1,1 @@
+/[\\/]node_modules[\\/](?!(assert-none-missing|b-assert|del|location-router|nodemon|normalize-styl|portal-gun|vtree-query|yargs|zorium)[\\/])/

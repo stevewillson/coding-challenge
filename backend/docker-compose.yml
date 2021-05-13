@@ -1,0 +1,62 @@
+version: "3.2"
+services: 
+  elasticsearch:
+    image: elasticsearch:7.8.1
+    volumes:
+      - /usr/share/elasticsearch/data:/data/es
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+      - cluster.routing.allocation.disk.threshold_enabled=false
+      - action.auto_create_index=.watches,.triggered_watches,.watcher-history-*
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+
+  redis:
+    image: redis:6.0.6
+    volumes:
+      - /data:/data
+    ports:
+      - "6379:6379"
+          
+  scylla:
+    image: scylladb/scylla:4.3.0
+    volumes:
+      - /var/lib/scylla:/var/lib/scylla
+    command:
+      - --smp 1
+    ports:
+      - "7000:7000"
+      - "7001:7001"
+      - "7199:7199"
+      - "9042:9042"
+      - "9160:9160"
+      - "9180:9180"
+
+
+  elasticsearchhq:
+    image: elastichq/elasticsearch-hq
+    # use http://elasticsearch:9200
+    environment:
+      - HQ_DEFAULT_URL=http://elasticsearch:9200
+    ports:
+      - "5000:5000"
+
+      
+  # reaper:
+  #   image: thelastpickle/cassandra-reaper:latest
+  #   environment:
+  #     - REAPER_STORAGE=cassandra
+  #     - REAPER_CASS_CONTACT_POINTS=["192.168.0.1"]
+  #     - REAPER_CASS_KEYSPACE=reaper_db
+  #     # - REAPER_CASS_CLUSTER_NAME=
+  #   ports:
+  #     - "8080:8080"
+  #     - "8081:8081"
+
+
+networks:
+  esnet:
+    driver: bridge
+      
