@@ -125,6 +125,30 @@ Instead of having to pass *both* count and setCount to a child component, you on
 
 It's also helpful in having parent components re-render less often. An example would be if you have a parent component that doesn't need to use the value of count, but 3 child components do. You can create the stream in the parent component, then pass it to the child components which can call useStream with it.
 
+### RxJS
+
+We use [RxJS](https://www.learnrxjs.io/) to create our streams. You don't necessarily need to learn all the ins and outs of RxJS - we mostly use Rx.BehaviorSubject, Rx.combineLatest, and the various piped in operators (.map, .switchMap, ...)
+
+We typically always use one of `new Rx.BehaviorSubject(initialValue)` or our own data structure pulled from services/obs.js `streams(initialValueStream)`
+
+When using Rx.BehaviorSubject, variables should be postfixed with `Stream`, eg `isLoadingStream`. When using streams(), variables should be postfixed with `Streams` eg `nameStreams`
+
+`**___Stream` (Rx.BehaviorSubject)**
+
+Use this when you're storing a string/boolean/object
+
+`**___Streams` (streams())**
+
+Use this when the initial value is a stream or derived from a stream.
+
+```
+// eg. a stream that starts from value from db
+const nameStream = streams(userStream.pipe(rx.map((user) => user?.name)))
+// can still be updated with .next
+nameStream.next('new name')
+
+```
+
 ## Hyperscript instead of JSX
 
 Typically React uses JSX, which feels more like HTML with JS embedded inside of braces
