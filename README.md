@@ -93,7 +93,7 @@ One of the key differences in the Spore codebase compared to typical React hooks
 
 If you're familiar with React, you know useState works like:
 
-```
+```javascript
 const [count, setCount] = useState(0)
 const [isLoading, setIsLoading] = useState(false)
 
@@ -105,7 +105,7 @@ In the above scenario, `count` holds the current value in state, and `setCount` 
 
 The useStream equivalent to this looks like
 
-```
+```javascript
 const { countStream, isLoadingStream } = useMemo(() => {
   return {
     countStream: new Rx.BehaviorSubject(0),
@@ -141,7 +141,7 @@ Use this when you're storing a string/boolean/object
 
 Use this when the initial value is a stream or derived from a stream.
 
-```
+```javascript
 // eg. a stream that starts from value from db
 const nameStream = streams(userStream.pipe(rx.map((user) => user?.name)))
 // can still be updated with .next
@@ -155,12 +155,12 @@ Typically React uses JSX, which feels more like HTML with JS embedded inside of 
 
 Here's an example with JSX:
 
-```
+```javascript
 import CustomComponent from '../CustomComponent.jsx'
 
 return (
 	<div className="my-class">
-	  <a href="<https://google.com>">Google</a>
+		<a href="<https://google.com>">Google</a>
 		<CustomComponent thisIsAProp="prop-value" />
 	</div>
 )
@@ -171,7 +171,7 @@ We use hyperscript, which is just a pure JS representation of the DOM (which is 
 
 Our equivalent hyperscript example above (with our naming conventions too) looks like this
 
-```
+```javascript
 import $customComponent from '../custom_component'
 
 return z('.my-class', [ // if no element name is specified, it defaults to div
