@@ -159,10 +159,10 @@ Here's an example with JSX:
 import CustomComponent from '../CustomComponent.jsx'
 
 return (
-	<div className="my-class">
-		<a href="<https://google.com>">Google</a>
-		<CustomComponent thisIsAProp="prop-value" />
-	</div>
+  <div className="my-class">
+    <a href="<https://google.com>">Google</a>
+    <CustomComponent thisIsAProp="prop-value" />
+  </div>
 )
 
 ```
@@ -175,7 +175,7 @@ Our equivalent hyperscript example above (with our naming conventions too) looks
 import $customComponent from '../custom_component'
 
 return z('.my-class', [ // if no element name is specified, it defaults to div
-	z('a', { href: '<https://google.com>' }, 'Google'),
+  z('a', { href: '<https://google.com>' }, 'Google'),
   z($customComponent, { thisIsAProp: 'prop-value' })
 ])
 
