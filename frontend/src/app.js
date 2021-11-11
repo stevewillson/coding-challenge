@@ -5,6 +5,8 @@ import * as rx from 'rxjs/operators'
 
 import $notesPage from './pages/notes'
 import $editNotePage from './pages/edit_note'
+import $treesPage from './pages/trees'
+import $editTreePage from './pages/edit_tree'
 import $fourOhFourPage from './pages/404'
 import GlobalContext from './context'
 
@@ -12,7 +14,10 @@ const routes = {
   '/': $notesPage,
   '/create': $editNotePage,
   '/edit/:slug': $editNotePage,
-  '/notes': $notesPage
+  '/notes': $notesPage,
+  '/editTree/:slug': $editTreePage,
+  '/createTree': $editTreePage,
+  '/trees': $treesPage
 }
 
 export default function $app (props) {

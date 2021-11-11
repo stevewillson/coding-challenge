@@ -3,6 +3,7 @@ import * as Rx from 'rxjs'
 import * as rx from 'rxjs/operators'
 
 import Note from './note'
+import Tree from './tree'
 import GraphqlClient from '../services/graphql_client'
 
 const SERIALIZATION_KEY = 'MODEL'
@@ -46,6 +47,7 @@ export default class Model {
     }
 
     this.note = new Note({ stream, call })
+    this.tree = new Tree({ stream, call })
   }
 
   // after page has loaded, refetch all initial (cached) requestsStream to verify they're still up-to-date

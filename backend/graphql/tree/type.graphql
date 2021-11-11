@@ -1,0 +1,55 @@
+type Tree {
+  id: ID
+  slug: String
+  title: String
+  body: String
+}
+"""
+  id: ID
+  species_common: String
+  species_botanic: String
+  diameter: String
+  stems: String
+  location_name: String
+  location_code: String
+  site_designation: String
+  inventory_date: Date
+  address: String
+  street: String
+  x_long: String
+  y_lat: String
+  workgroup: String
+  notable: String
+  slug: String
+}
+//SITE_ID - number
+//SPECIES_COMMON - string (YES)
+//SPECIES_BOTANIC - string (YES)
+//DIAMETER - range (enumerated value) (YES)
+//STEMS - string / number (YES)
+//LOCATION_NAME - string
+//LOCATION_CODE - short code / number / string
+//SITE_DESIGNATION - short enumeration list, could be string
+//INVENTORY_DATE - date (YES)
+//ADDRESS - string
+//STREET - string
+//NEIGHBOR - neighborhood
+//X_LONG - longitude (YES)
+//Y_LAT - latitude (YES)
+//WORKGROUP - Inspections, Operations, Sister Agencies, Unassigned
+//NOTABLE - Enum (Yes, No, N/A, NOTABLE)
+"""
+
+type TreeConnection {
+  nodes: [Tree!]
+  totalCount: Int
+}
+
+extend type Query {
+  trees(titleQueryStr: String): TreeConnection
+  tree(id: ID, slug: String): Tree
+}
+
+extend type Mutation {
+  treeUpsert(id: ID, title: String, body: String): Tree
+}

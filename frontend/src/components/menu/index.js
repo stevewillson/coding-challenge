@@ -13,6 +13,12 @@ export default function $menu () {
     }, 'Notes')),
     router.link(z('a.link', {
       href: '/create'
-    }, 'Create'))
+    }, 'Create')),
+    router.link(z('a.link', {
+      href: '/trees'
+    }, 'Trees')),
+    router.link(z('a.link', {
+      href: '/createTree'
+    }, 'Create Tree'))
   ])
 }
