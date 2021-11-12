@@ -13,7 +13,7 @@ export default function $home ({ treeStream }) {
   const { model, router } = useContext(context)
 
   const {
-    isLoadingStream, titleValueStreams, bodyValueStreams
+    isLoadingStream, titleValueStreams, bodyValueStreams, commonSpeciesStreams, botanicSpeciesStreams
   } = useMemo(() => {
     return {
       isLoadingStream: new Rx.BehaviorSubject(false),
@@ -22,20 +22,28 @@ export default function $home ({ treeStream }) {
       )),
       bodyValueStreams: streams(treeStream.pipe(
         rx.map((tree) => tree?.body)
-      ))
+      )),
+      commonSpeciesStreams: streams(treeStream.pipe(
+        rx.map((tree) => tree?.commonSpecies)
+      )),
+      botanicSpeciesStreams: streams(treeStream.pipe(
+        rx.map((tree) => tree?.botanicSpecies)
+      )),
     }
   }, [])
 
-  const { isLoading, tree, title, body } = useStream(() => ({
+  const { isLoading, tree, title, body, commonSpecies, botanicSpecies } = useStream(() => ({
     isLoading: isLoadingStream,
     tree: treeStream,
     title: titleValueStreams.stream,
-    body: bodyValueStreams.stream
+    body: bodyValueStreams.stream,
+    commonSpecies: commonSpeciesStreams.stream,
+    botanicSpecies: botanicSpeciesStreams.stream
   }))
 
   const save = async () => {
     isLoadingStream.next(true)
-    const updatedTree = await model.tree.upsert({ id: tree?.id, title, body })
+    const updatedTree = await model.tree.upsert({ id: tree?.id, title, body, commonSpecies, botanicSpecies })
     isLoadingStream.next(false)
     if (!tree) {
       router.go(`/editTree/${updatedTree.slug}`)
@@ -54,6 +62,18 @@ export default function $home ({ treeStream }) {
       z($textarea, {
         placeholder: 'Body',
         valueStreams: bodyValueStreams
+      })
+    ]),
+    z('.input', [
+      z($input, {
+        placeholder: 'Common Species',
+        valueStreams: commonSpeciesStreams
+      })
+    ]),
+    z('.input', [
+      z($input, {
+        placeholder: 'Botanic Species',
+        valueStreams: botanicSpeciesStreams
       })
     ]),
     z('button', { onclick: save }, isLoading ? 'Loading...' : 'Save')

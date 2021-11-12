@@ -4,8 +4,8 @@ import Tree from './model.js'
 
 export default {
   Mutation: {
-    treeUpsert: async (rootValue, { id, title, body }) => {
-      const diff = { title, body }
+    treeUpsert: async (rootValue, { id, title, body, commonSpecies, botanicSpecies }) => {
+      const diff = { title, body, commonSpecies, botanicSpecies }
       const existingTree = id && await Tree.getById(id)
       if (!existingTree) {
         diff.slug = await Tree.getUniqueSlug(_.kebabCase(title))

@@ -17,7 +17,9 @@ class Tree extends Base {
           id: 'timeuuid',
           slug: 'text',
           title: 'text',
-          body: 'text'
+          body: 'text',
+          commonSpecies: 'text',
+          botanicSpecies: 'text'
         },
         primaryKey: {
           partitionKey: ['id']
@@ -42,7 +44,9 @@ class Tree extends Base {
         mappings: {
           slug: { type: 'keyword' },
           title: { type: 'search_as_you_type' },
-          body: { type: 'text' }
+          body: { type: 'text' },
+          commonSpecies: { type: 'text'},
+          botanicSpecies: { type: 'text' }
         }
       }
     ]

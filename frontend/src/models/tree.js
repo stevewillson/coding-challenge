@@ -13,6 +13,8 @@ export default class Tree {
             slug
             title
             body
+            commonSpecies
+            botanicSpecies
           }
         }`,
       variables: { slug },
@@ -31,6 +33,8 @@ export default class Tree {
               slug
               title
               body
+              commonSpecies
+              botanicSpecies
             }
           }
         }`,
@@ -39,19 +43,21 @@ export default class Tree {
     })
   }
 
-  upsert = ({ id, title, body }) => {
+  upsert = ({ id, title, body, commonSpecies, botanicSpecies }) => {
     return this.call({
       query: `
         mutation TreeUpsert(
           $id: ID
           $title: String
           $body: String
+          $commonSpecies: String
+          $botanicSpecies: String
         ) {
-          treeUpsert(id: $id, title: $title, body: $body) {
+          treeUpsert(id: $id, title: $title, body: $body, commonSpecies: $commonSpecies, botanicSpecies: $botanicSpecies ) {
             id, slug
           }
         }`,
-      variables: { id, title, body },
+      variables: { id, title, body, commonSpecies, botanicSpecies },
       pull: 'treeUpsert'
     }, { invalidateAll: true })
   }

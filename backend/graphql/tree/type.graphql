@@ -3,10 +3,11 @@ type Tree {
   slug: String
   title: String
   body: String
+  commonSpecies: String
+  botanicSpecies: String
 }
 """
   id: ID
-  species_common: String
   species_botanic: String
   diameter: String
   stems: String
@@ -51,5 +52,5 @@ extend type Query {
 }
 
 extend type Mutation {
-  treeUpsert(id: ID, title: String, body: String): Tree
+  treeUpsert(id: ID, title: String, body: String, commonSpecies: String, botanicSpecies: String): Tree
 }
